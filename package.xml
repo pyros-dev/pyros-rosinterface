@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>pyros_rosinterface</name>
+  <name>pyros_interfaces_ros</name>
   <version>0.3.0</version>
   <description>
     Dynamic ROS interface for Pyros

@@ -1,64 +1,65 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(pyros_rosinterface)
+project(pyros_interfaces_ros)
 
-# Minimal Python module setup
+# For ease of use, this CMakeLists allows to use this code from source, as if it were a normal catkin package.
+# However no ROS/catkin debian package is provided for it.
+# It is just a pip package that your packages should depend on (using rosdep pip dependency mechanism).
+# We should follow closely https://github.com/gerkey/ros1_external_use
+
+# Minimal Python module setup - catkin is assumed preinstalled along with ROS
+# This assume catkin is installed along with a minimal ROS system.
 find_package(catkin REQUIRED COMPONENTS
-    roslint
+    catkin_pip
     rospy
-    std_msgs
-    message_generation
+    rosgraph
+    roslaunch
+    rostest
 )
 
-catkin_python_setup()
+# defining current package as a package that should be managed by pip (not catkin - even though we make it usable with workspaces)
+catkin_pip_setup()
+catkin_package()
+
+## Unit tests
+if (CATKIN_ENABLE_TESTING)
 
 
-# Lint Python modules
-file(GLOB_RECURSE ${PROJECT_NAME}_PY_SRCS
-     RELATIVE ${PROJECT_SOURCE_DIR} src/pyros_test/*.py)
-roslint_python(${${PROJECT_NAME}_PY_SRCS})
+    ##############################################################################
+    # Nose Tests
+    ##############################################################################
+
+    # Careful this will not support parallel testing, due to multiprocess environment used in tests
+    # because of ROS (node_init() can be called only once per process)
+    # these should be run in separate process each to avoid global side effect during tests
+    # TODO : find a way to force nose to run each test isolated ?
+    catkin_add_nosetests(pyros_interfaces_ros/tests)
+    catkin_add_nosetests(pyros_tests)
+
+    ##############################################################################
+    # Ros Tests
+    ##############################################################################
+
+    # find_package(catkin REQUIRED COMPONENTS rostest)
+
+    # These rostests need to be run one by one ( because of rospy side effects)
+    # Note : using pyros-setup should fix this...
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/testService.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/testStringPublisher.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/testStringSubscriber.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_param_if_pool.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_service_if_pool.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_subscriber_if_pool.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_publisher_if_pool.py)
+    catkin_add_nosetests(pyros_interfaces_ros/rostests/testRosInterface.py)
+    # TMP : Disabled because it can hang sometimes on jenkins.
+    #catkin_add_nosetests(pyros_interfaces_ros/rostests/testPyrosROS.py)
+    # Running with nose because rostest fails ( not sure why yet )
+
+    # add_rostest(pyros_interfaces_ros/rostests/testStringTopic.test)
+    # add_rostest(pyros_interfaces_ros/rostests/testService.test)
+
+    # Testing rosinterface class integration in pyros
+    # add_rostest(pyros_interfaces_ros/rostests/testRosInterface.test)
 
 
-add_message_files(
-  DIRECTORY
-    msg
-  FILES
-    opt_empty.msg
-    opt_bool.msg
-    opt_int8.msg
-    opt_int16.msg
-    opt_int32.msg
-    opt_int64.msg
-    opt_uint8.msg
-    opt_uint16.msg
-    opt_uint32.msg
-    opt_uint64.msg
-    opt_float32.msg
-    opt_float64.msg
-    opt_string.msg
-    opt_time.msg
-    opt_duration.msg
-    opt_header.msg
-)
-
-
-add_service_files(DIRECTORY srv
-    FILES
-    StringEchoService.srv
-)
-generate_messages(DEPENDENCIES std_msgs)
-catkin_package( CATKIN_DEPENDS message_runtime std_msgs)
-
-install(
-    PROGRAMS
-        nodes/echo.py
-        nodes/emptyService.py
-        nodes/slowService.py
-        nodes/triggerService.py
-        nodes/common.py
-        nodes/string_pub_node.py
-        nodes/string_pubnot_node.py
-        nodes/string_slow_node.py
-        nodes/string_sub_node.py
-    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-    )
-
+endif()

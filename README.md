@@ -1,2 +1,2 @@
 # pyros-rosinterface
-ROSInterface sub-package for pyros
+ROS Interface sub-package for Pyros
