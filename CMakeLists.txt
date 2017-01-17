@@ -32,8 +32,8 @@ if (CATKIN_ENABLE_TESTING)
     # because of ROS (node_init() can be called only once per process)
     # these should be run in separate process each to avoid global side effect during tests
     # TODO : find a way to force nose to run each test isolated ?
-    catkin_add_nosetests(pyros_interfaces_ros/tests)
-    catkin_add_nosetests(pyros_tests)
+    catkin_add_nosetests(src/pyros_interfaces_ros/tests)
+    catkin_add_nosetests(src/pyros_tests)
 
     ##############################################################################
     # Ros Tests
@@ -43,20 +43,20 @@ if (CATKIN_ENABLE_TESTING)
 
     # These rostests need to be run one by one ( because of rospy side effects)
     # Note : using pyros-setup should fix this...
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/testService.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/testStringPublisher.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/testStringSubscriber.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_param_if_pool.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_service_if_pool.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_subscriber_if_pool.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/test_publisher_if_pool.py)
-    catkin_add_nosetests(pyros_interfaces_ros/rostests/testRosInterface.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/testService.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/testStringPublisher.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/testStringSubscriber.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/test_param_if_pool.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/test_service_if_pool.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/test_subscriber_if_pool.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/test_publisher_if_pool.py)
+    catkin_add_nosetests(src/pyros_interfaces_ros/rostests/testRosInterface.py)
     # TMP : Disabled because it can hang sometimes on jenkins.
-    #catkin_add_nosetests(pyros_interfaces_ros/rostests/testPyrosROS.py)
+    #catkin_add_nosetests(src/pyros_interfaces_ros/rostests/testPyrosROS.py)
     # Running with nose because rostest fails ( not sure why yet )
 
-    # add_rostest(pyros_interfaces_ros/rostests/testStringTopic.test)
-    # add_rostest(pyros_interfaces_ros/rostests/testService.test)
+    # add_rostest(src/pyros_interfaces_ros/rostests/testStringTopic.test)
+    # add_rostest(src/pyros_interfaces_ros/rostests/testService.test)
 
     # Testing rosinterface class integration in pyros
     # add_rostest(pyros_interfaces_ros/rostests/testRosInterface.test)
