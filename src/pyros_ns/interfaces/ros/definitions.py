@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 from . import deffile
-from .util import get_json_bool, type_str, load_type
+from .util import type_str, load_type
 
 def get_all_msg_types(msg, skip_this=False, type_set=None):
     if type_set is None:

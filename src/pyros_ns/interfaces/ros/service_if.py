@@ -7,7 +7,7 @@ import roslib
 
 from .api import rospy_safe as rospy
 from .message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException, NonexistentFieldException
-from ..baseinterface import TransientIf
+from pyros.interfaces.base import TransientIf
 
 
 # outputs message structure as string (useful ?)
@@ -58,7 +58,7 @@ class ServiceBack(TransientIf):
         self.srvtype = get_service_srv_dict(self)
 
         rospy.loginfo(
-            rospy.get_name() + " Pyros.rosinterface : Adding service interface {name} {typename}".format(
+            rospy.get_name() + " Pyros.ros : Adding service interface {name} {typename}".format(
                 name=self.name, typename=self.rostype_name))
 
         self.proxy = rospy.ServiceProxy(self.name, self.rostype)
@@ -66,7 +66,7 @@ class ServiceBack(TransientIf):
     def cleanup(self):
 
         rospy.loginfo(
-            rospy.get_name() + " Pyros.rosinterface : Removing service interface {name} {typename}".format(
+            rospy.get_name() + " Pyros.ros : Removing service interface {name} {typename}".format(
                 name=self.name, typename=self.rostype))
 
         super(ServiceBack, self).cleanup()

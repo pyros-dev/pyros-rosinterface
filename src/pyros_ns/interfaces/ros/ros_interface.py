@@ -24,7 +24,7 @@ _logger = logging.getLogger(__name__)
 # and let it propagate to parent logger, or other handler
 # the user of pyros should configure handlers
 
-from ..baseinterface import DiffTuple
+from pyros.interfaces.base import DiffTuple
 from .baseinterface import BaseInterface
 from .param_if_pool import RosParamIfPool
 from .service_if_pool import RosServiceIfPool
@@ -452,15 +452,15 @@ class RosInterface(BaseInterface):
 
         if publishers_if_dt.added or publishers_if_dt.removed:
             self._debug_logger.debug(
-                rospy.get_name() + " Pyros.rosinterface : Publishers Delta {publishers_if_dt}".format(
+                rospy.get_name() + " Pyros.ros : Publishers Delta {publishers_if_dt}".format(
                     **locals()))
         if subscribers_if_dt.added or subscribers_if_dt.removed:
             self._debug_logger.debug(
-                rospy.get_name() + " Pyros.rosinterface : Subscribers Delta {subscribers_if_dt}".format(
+                rospy.get_name() + " Pyros.ros : Subscribers Delta {subscribers_if_dt}".format(
                     **locals()))
         if services_if_dt.added or services_if_dt.removed:
             self._debug_logger.debug(
-                rospy.get_name() + " Pyros.rosinterface : Services Delta {services_if_dt}".format(
+                rospy.get_name() + " Pyros.ros : Services Delta {services_if_dt}".format(
                     **locals()))
 
         # TODO : put that in debug log and show based on python logger configuration

@@ -54,7 +54,7 @@ logging.config.dictConfig(
                 'handlers': ['console'],
                 'level': 'INFO',
             },
-            'pyros.rosinterface': {
+            'pyros.ros': {
                 'handlers': ['console'],
                 'level': 'DEBUG',
             },
@@ -70,8 +70,8 @@ logging.config.dictConfig(
 # Unit test import (  will emulate ROS setup if needed )
 import nose
 
-from pyros.baseinterface import DiffTuple
-from pyros.rosinterface import RosInterface
+from pyros.interfaces.base import DiffTuple
+from pyros_interfaces_ros import RosInterface
 
 
 import rospy
@@ -80,7 +80,7 @@ import rosnode
 from std_msgs.msg import String, Empty
 from std_srvs.srv import Empty as EmptySrv, Trigger
 
-from pyros.rosinterface.rostests import Timeout
+from pyros_interfaces_ros.rostests import Timeout
 
 # useful test tools
 from pyros_utils import rostest_nose

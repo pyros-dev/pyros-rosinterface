@@ -54,7 +54,7 @@ logging.config.dictConfig(
                 'handlers': ['console'],
                 'level': 'INFO',
             },
-            'pyros.rosinterface': {
+            'pyros.ros': {
                 'handlers': ['console'],
                 'level': 'DEBUG',
             },

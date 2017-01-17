@@ -35,7 +35,7 @@ from .api import roslib_safe as roslib
 from .api import rospy_safe as rospy
 # TODO : if possible use rospy internals
 
-from ..exceptions import PyrosException
+from pyros.exceptions import PyrosException
 
 import re
 import string

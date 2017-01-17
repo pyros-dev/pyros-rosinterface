@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 from .param_if import ParamBack, ParamTuple
 
-from ..baseinterface import TransientIfPool, DiffTuple
+from pyros.interfaces.base import TransientIfPool, DiffTuple
 
 
 class RosParamIfPool(TransientIfPool):

@@ -44,7 +44,7 @@ class SubscriberBack(TopicBase):
         # Is 1 a good choice ? # TODO : check which value is best here...
 
         rospy.loginfo(
-            rospy.get_name() + " Pyros.rosinterface : Adding publisher interface {name} {typename}".format(
+            rospy.get_name() + " Pyros.ros : Adding publisher interface {name} {typename}".format(
                 name=self.name, typename=self.rostype))
 
         self.topic = self.pool.acquire(self.name, self.rostype, queue_size=1)
@@ -68,7 +68,7 @@ class SubscriberBack(TopicBase):
         """
         # TODO : should we do this in del method instead ? to allow reuse until garbage collection actually happens...
         rospy.loginfo(
-            rospy.get_name() + " Pyros.rosinterface : Removing publisher interface {name} {typename}".format(
+            rospy.get_name() + " Pyros.ros : Removing publisher interface {name} {typename}".format(
                 name=self.name, typename=self.rostype))
 
         self.pool.release(self.topic)

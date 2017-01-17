@@ -38,7 +38,7 @@ class PublisherBack(TopicBase):
         super(PublisherBack, self).__init__(topic_name, topic_type)
 
         rospy.loginfo(
-            rospy.get_name() + " Pyros.rosinterface : Adding subscriber interface {name} {typename}".format(
+            rospy.get_name() + " Pyros.ros : Adding subscriber interface {name} {typename}".format(
                 name=self.name, typename=self.rostype))
 
         # this message queue should be ready before we setup the callback
@@ -67,7 +67,7 @@ class PublisherBack(TopicBase):
 
         # TODO : should we do this in del method instead ? to allow reuse until garbage collection actually happens...
         rospy.loginfo(
-            rospy.get_name() + " Pyros.rosinterface : Removing subscriber interface {name} {typename}".format(
+            rospy.get_name() + " Pyros.ros : Removing subscriber interface {name} {typename}".format(
                 name=self.name, typename=self.rostype))
 
         self.pool.release(self.topic)

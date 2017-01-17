@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 #This python package is handling all ROS related communication for rostful-node.
-from __future__ import absolute_import
+from __future__ import absolute_import, division, print_function
 
 import logging
 
 """
-Hopefully this should endup in rosinterface.__doc__
+Hopefully this should endup in ros.__doc__
 """
 
 # create logger
