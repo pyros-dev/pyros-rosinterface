@@ -70,7 +70,7 @@ logging.config.dictConfig(
 # Unit test import (  will emulate ROS setup if needed )
 import nose
 
-from pyros.interfaces.base import DiffTuple
+from pyros_interfaces_base import DiffTuple
 from pyros_interfaces_ros import RosInterface
 
 

@@ -18,15 +18,15 @@ import Queue
 
 import time
 
-from pyros.interfaces.base.regex_tools import regexes_match_sublist
+from pyros_interfaces_base.regex_tools import regexes_match_sublist
 
 # create logger
 _logger = logging.getLogger(__name__)
 # and let it propagate to parent logger, or other handler
 # the user of pyros should configure handlers
 
-from pyros.interfaces.base import TransientIfPool
-from pyros.interfaces.base import DiffTuple
+from pyros_interfaces_base import TransientIfPool
+from pyros_interfaces_base import DiffTuple
 
 from .topicbase import TopicTuple
 from .subscriber_if import SubscriberBack

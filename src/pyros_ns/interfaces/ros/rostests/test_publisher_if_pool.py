@@ -70,9 +70,9 @@ logging.config.dictConfig(
 # Unit test import (  will emulate ROS setup if needed )
 import nose
 
-from pyros.baseinterface import DiffTuple
-from pyros.rosinterface import RosPublisherIfPool
-from pyros.rosinterface.connection_cache_utils import connection_cache_proxy_create, connection_cache_marshall
+from pyros_interfaces_base import DiffTuple
+from pyros_interfaces_ros import RosPublisherIfPool
+from pyros_interfaces_ros.connection_cache_utils import connection_cache_proxy_create, connection_cache_marshall
 
 
 import rospy
@@ -81,7 +81,7 @@ import rosnode
 from std_msgs.msg import String, Empty
 from std_srvs.srv import Empty as EmptySrv, Trigger
 
-from pyros.rosinterface.rostests import Timeout
+from pyros_interfaces_ros.rostests import Timeout
 
 # useful test tools
 from pyros_utils import rostest_nose

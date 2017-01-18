@@ -15,7 +15,7 @@ current_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..
 sys.path.insert(1, current_path)  # sys.path[0] is always current path as per python spec
 
 # Unit test import
-from pyros.rosinterface import ServiceBack
+from pyros_interfaces_ros import ServiceBack
 
 
 # ROS imports should now work from ROS or from python (with or without ROS env setup - emulated if needed)

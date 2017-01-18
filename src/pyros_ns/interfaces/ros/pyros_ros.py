@@ -8,11 +8,11 @@ import time
 
 import sys
 
-from pyros.interfaces.base.basenode import PyrosBase
+from pyros_interfaces_base.basenode import PyrosBase
 import logging
 import unicodedata
 
-from pyros.utils import deprecated
+from pyros_common.utils import deprecated
 
 
 from pyros import config

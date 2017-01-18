@@ -27,10 +27,10 @@ with open('src/pyros_ns/interfaces/ros/_version.py') as vf:
     exec(vf.read())
 
 
-setuptools.setup(name='pyros.ros',
+setuptools.setup(name='pyros_ros',
     version=__version__,
     description='Pyros ROS interface to provide ROS introspection for non-ROS users.',
-    url='http://github.com/asmodehn/pyros-ros',
+    url='http://github.com/asmodehn/pyros-rosinterface',
     author='AlexV',
     author_email='asmodehn@gmail.com',
     license='BSD',
