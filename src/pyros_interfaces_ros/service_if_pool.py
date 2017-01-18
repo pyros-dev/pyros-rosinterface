@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 # and let it propagate to parent logger, or other handler
 # the user of pyros should configure handlers
 
-from pyros_interfaces_base import TransientIfPool
+from pyros_common.transient_if_pool import TransientIfPool
 
 from .service_if import ServiceBack, ServiceTuple
 

@@ -23,7 +23,7 @@ import setuptools
 
 
 # Ref : https://packaging.python.org/single_source_version/#single-sourcing-the-version
-with open('src/pyros_ns/interfaces/ros/_version.py') as vf:
+with open('src/pyros_interfaces_ros/_version.py') as vf:
     exec(vf.read())
 
 
@@ -36,14 +36,12 @@ setuptools.setup(name='pyros_ros',
     license='BSD',
     # TODO : enable namespace packages when supported properly with pip
     # packages=[
-    #     'pyros.tests',
     #     'pyros.interfaces.ros',
     #     'pyros.interfaces.ros.api',
     #     'pyros.interfaces.ros.tests',
     #     'pyros.interfaces.ros.rostests',
     # ],
     packages=[
-        'pyros_tests',
         'pyros_interfaces_ros',
         'pyros_interfaces_ros.api',
         'pyros_interfaces_ros.tests',
@@ -51,7 +49,6 @@ setuptools.setup(name='pyros_ros',
     ],
     package_dir={
         #'pyros': 'src/pyros',
-        'pyros_tests': 'src/pyros_tests',
         'pyros_interfaces_ros': 'src/pyros_interfaces_ros'
     },
     # entry_points={

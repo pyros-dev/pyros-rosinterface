@@ -1,15 +1,17 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, division, print_function
 
 import os
 import sys
 import pickle
 
 # This is needed if running this test directly (without using nose loader)
-# prepending because ROS relies on package dirs list in PYTHONPATH and not isolated virtualenvs
-# And we need our current module to be found first.
-current_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-# if not current_path in sys.path:
-sys.path.insert(1, current_path)  # sys.path[0] is always current path as per python spec
+if __name__ == '__main__':
+    # prepending because ROS relies on package dirs list in PYTHONPATH and not isolated virtualenvs
+    # And we need our current module to be found first, before any similar package from another workspace
+    current_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    # if not current_path in sys.path:
+    sys.path.insert(1, current_path)  # sys.path[0] is always current path as per python spec
+
 
 # Unit test import
 from pyros_interfaces_ros import message_conversion as msgconv
@@ -56,5 +58,7 @@ def test_msg_exception_pickle():
 
 #TODO : assert exception are being thrown
 
+
 if __name__ == '__main__':
+    # finally running nose
     nose.runmodule()

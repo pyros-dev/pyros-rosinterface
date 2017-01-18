@@ -33,7 +33,6 @@ if (CATKIN_ENABLE_TESTING)
     # these should be run in separate process each to avoid global side effect during tests
     # TODO : find a way to force nose to run each test isolated ?
     catkin_add_nosetests(src/pyros_interfaces_ros/tests)
-    catkin_add_nosetests(src/pyros_tests)
 
     ##############################################################################
     # Ros Tests

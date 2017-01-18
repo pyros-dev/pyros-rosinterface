@@ -27,8 +27,6 @@ import roslaunch
 import rostopic
 import std_msgs.msg as std_msgs
 
-import pyros
-
 from pyros_utils import rostest_nose
 import logging
 import inspect

@@ -7,7 +7,7 @@ import roslib
 
 from .api import rospy_safe as rospy
 from .message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException, NonexistentFieldException
-from pyros_interfaces_base import TransientIf
+from pyros_common.transient_if import TransientIf
 
 
 # outputs message structure as string (useful ?)
