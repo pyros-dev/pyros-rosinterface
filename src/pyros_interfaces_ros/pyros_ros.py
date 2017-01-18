@@ -8,7 +8,7 @@ import time
 
 import sys
 
-from pyros_interfaces_base.basenode import PyrosBase
+from pyros_common.basenode import PyrosBase
 import logging
 import unicodedata
 
