@@ -1,24 +1,10 @@
 from __future__ import absolute_import
 
-import os
-from collections import namedtuple, MutableMapping
-from copy import deepcopy, copy
 from itertools import ifilter
 import logging
 
-import pyros_utils
 import rospy
 import rosservice, rostopic, rosparam
-
-import re
-import ast
-import socket
-import threading
-import Queue
-
-import time
-
-from pyros_common.regex_tools import regexes_match_sublist
 
 # create logger
 _logger = logging.getLogger(__name__)
