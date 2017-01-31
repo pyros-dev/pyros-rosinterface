@@ -1,12 +1,6 @@
 from __future__ import absolute_import
 
-import os
-
 import six
-import time
-
-
-import sys
 
 from pyros_common.basenode import PyrosBase
 import logging
@@ -15,7 +9,7 @@ import unicodedata
 from pyros_common.utils import deprecated
 
 
-from pyros import config
+from . import config
 
 
 class PyrosROS(PyrosBase):
@@ -66,10 +60,10 @@ class PyrosROS(PyrosBase):
             instance_relative_config=True,
             default_config=self._default_config)  # we pass our specific default config
 
-        # overriding default config with parameter provided
-        self.config_handler.configure(config)  # configuring with our package default
+        # overriding default config with file provided
+        self.config_handler.configure(config)  # configuring with our package default (user can statically define this)
         if pyros_config:
-            self.config_handler.configure(pyros_config)  # configuring with argument passed form user
+            self.config_handler.configure(pyros_config)  # configuring with argument passed from user
 
 
     # TODO: get rid of this to need one less client-node call
