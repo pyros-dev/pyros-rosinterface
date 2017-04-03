@@ -21,7 +21,7 @@ _logger = logging.getLogger(__name__)
 try:
     from .api import rospy_safe  # early except to prevent unintentional workaround in all modules here for ROS packages
     # early except to prevent unintentional workaround in all modules here for pyros packages we depend on
-    import pyros_common
+    import pyros_interfaces.common
     # We ideally should add all dependencies imported by the modules in this subpackage...
     # We should be fine here when running from deb.
     # But when running from python we have to except here to get environment setup properly in child process.
@@ -35,7 +35,7 @@ except ImportError:
     pyros_setup.configurable_import().configure().activate()
     # validate we can load ROS modules. Note other variables (like ROS_PACKAGE_PATH) should also be available.
     from .api import rospy_safe
-    import pyros_common
+    import pyros_interfaces.common
 
 from .service_if import ServiceBack
 from .param_if import ParamBack

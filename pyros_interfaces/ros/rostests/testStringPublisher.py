@@ -15,11 +15,9 @@ sys.path.insert(1, current_path)  # sys.path[0] is always current path as per py
 
 # Unit test import ( will emulate ROS setup if needed )
 import time
-import Queue
 
-from pyros_interfaces_ros.subscriber_if import SubscriberBack
-from pyros_interfaces_ros.message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException
-
+from pyros_interfaces.ros.publisher_if import PublisherBack
+from pyros_interfaces.ros.message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException
 
 # ROS imports should now work from ROS or from python (without ROS env setup)
 import rospy
@@ -69,47 +67,36 @@ def teardown_module():
 #  -> means we probably need a way to keep but greatly compress old messages ( logrotate style )
 
 
-class TestStringSubscriber(unittest.TestCase):
-    """ Testing the TopicBack class with String message """
+class TestStringPublisher(unittest.TestCase):
+    """ Testing the PublisherBack class with String message """
     # misc method
     def logPoint(self):
         currentTest = self.id().split('.')[-1]
         callingFunction = inspect.stack()[1][3]
         print('in {0!s} - {1!s}()'.format(currentTest, callingFunction))
 
-    def sub_cb(self, data):
-        res = extract_values(data)
-        self.msg_queue.put(res)
-
-    def msg_extract(self, retries=5, retrysleep=1):
-        msg = None
-        try:
-            msg = self.msg_queue.get_nowait()
-        except Queue.Empty:
-            pass
+    def msg_extract(self, pub_if, retries=5, retrysleep=1):
+        msg = pub_if.get()
         retry = 0
         while not msg and retry < retries:
             print('Message not extracted. Retrying...')
             rospy.rostime.wallsleep(retrysleep)
             retry += 1
-            try:
-                msg = self.msg_queue.get_nowait()
-            except Queue.Empty:
-                pass
+            msg = pub_if.get()
         if retry >= retries:
             self.fail('Message not extracted. Failing.')
         else:
             return msg
 
-    def msg_wait(self, expected_msg, topic, retries=5, retrysleep=1):
-        msg = self.msg_extract(topic)
+    def msg_wait(self, expected_msg, pub_if, retries=5, retrysleep=1):
+        msg = self.msg_extract(pub_if)
         retry = 0
         # set XOR is a quick way to diff dict : if empty we stop (dicts are equals)
         while retry < retries and (set(six.iteritems(msg)) ^ set(six.iteritems(expected_msg))):
             print('Discarding unexpected message {0}. Retrying...'.format(msg))
             rospy.rostime.wallsleep(retrysleep)
             retry += 1
-            msg = self.msg_extract(topic)
+            msg = self.msg_extract(pub_if)
             print('Checking msg \"{0}\" == s \"{1}\"'.format(msg, expected_msg))
 
         if retry >= retries:
@@ -138,10 +125,8 @@ class TestStringSubscriber(unittest.TestCase):
         Non roslaunch fixture setup method
         :return:
         """
-        # setting up internal queue to receive messages
-        self.msg_queue = Queue.Queue()
 
-        self.sub_topic_name = '/testing/Subscriber'
+        self.pub_topic_name = '/testing/publisher'
 
         # No need of parameter for that, any str should work
         self.test_message = "testing"
@@ -150,29 +135,35 @@ class TestStringSubscriber(unittest.TestCase):
         self.logPoint()
         pass
 
-    def test_subscriber_comm(self):
+    def test_publisher_comm(self):
         try:
             self.logPoint()
 
             # exposing the topic for testing here
-            self.sub_topic = rospy.Subscriber(self.sub_topic_name, std_msgs.String, self.sub_cb)
-            # looking for the topic ( similar code than ros_interface.py )
-            sub_topic_type, sub_topic_class = self.topic_wait_type(self.sub_topic_name)
+            self.pub_topic = rospy.Publisher(self.pub_topic_name, std_msgs.String, queue_size=1)
 
-            assert(sub_topic_class == std_msgs.String)
-            self.sub_if = SubscriberBack(self.sub_topic_name, sub_topic_type)
+            # looking for the topic ( similar code than ros_interface.py )
+            pub_topic_type, pub_topic_class = self.topic_wait_type(self.pub_topic_name)
+
+            assert_true(pub_topic_class == std_msgs.String)
+            self.pub_if = PublisherBack(self.pub_topic_name, pub_topic_type)
 
             # Making sure the topic interface is ready to be used just after creation
-            # by checking the number of connections on the actual subscriber
-            subs_connected = self.sub_topic.impl.get_num_connections()  # no local subs
+            # by checking number of connections on the actual publisher
+            subs_connected = self.pub_topic.impl.get_num_connections()  # no local pub
             assert_true(subs_connected == 1)
 
             # Topics are up. Use them.
-            print("sending : {msg} on topic {topic}".format(msg=self.test_message, topic=self.sub_if.name))
-            assert_true(self.sub_if.publish({'data': self.test_message}))
+            print("sending : {msg} on topic {topic}".format(msg=self.test_message, topic=self.pub_topic.name))
+            msg = pub_topic_class()
+            # TODO : better serialization
+            populate_instance({'data': self.test_message}, msg)
+            if isinstance(msg, pub_topic_class):
+                self.pub_topic.publish(msg)  # This should return False if publisher not fully setup yet
+                # CAREFUL the return spec of rospy's publish is not consistent
 
-            print("waiting for : {msg} on topic {topic}".format(msg={'data': self.test_message}, topic=self.sub_topic.name))
-            msg = self.msg_wait({'data': self.test_message}, self.sub_topic)
+            print("waiting for : {msg} on topic {topic}".format(msg={'data': self.test_message}, topic=self.pub_if.name))
+            msg = self.msg_wait({'data': self.test_message}, self.pub_if)
             # We assert there is no difference
             assert_true(len(set(six.iteritems(msg)) ^ set(six.iteritems({'data': self.test_message}))) == 0)
 
@@ -183,4 +174,4 @@ class TestStringSubscriber(unittest.TestCase):
 if __name__ == '__main__':
     print("ARGV : %r", sys.argv)
     # Note : Tests should be able to run with nosetests, or rostest ( which will launch nosetest here )
-    rostest_nose.rostest_or_nose_main('pyros', 'testStringSubscriber', TestStringSubscriber, sys.argv)
+    rostest_nose.rostest_or_nose_main('pyros', 'testStringPublisher', TestStringPublisher, sys.argv)

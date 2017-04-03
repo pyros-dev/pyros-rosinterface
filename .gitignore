@@ -4,5 +4,5 @@
 .noseids
 build/
 dist/
-pyros.egg-info/
+*.egg-info/
 .tox/

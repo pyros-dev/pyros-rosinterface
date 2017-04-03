@@ -1,33 +1,12 @@
-# from distutils.core import setup
-# from catkin_pkg.python_setup import generate_distutils_setup
-#
-# # ROS PACKAGING
-# # using distutils : https://docs.python.org/2/distutils
-# # fetch values from package.xml
-# setup_args = generate_distutils_setup(
-#     packages=[
-#         'pyros',
-#         'pyros.ros',
-#         'pyros.ros.api',
-#         'pyros.ros.tests',
-#         'pyros.ros.rostests',
-#     ],
-#     package_dir={
-#         'pyros': 'src/pyros',
-#     }
-# )
-# setup(**setup_args)
-
-
 import setuptools
 
 
 # Ref : https://packaging.python.org/single_source_version/#single-sourcing-the-version
-with open('src/pyros_interfaces_ros/_version.py') as vf:
+with open('pyros_interfaces/ros/_version.py') as vf:
     exec(vf.read())
 
 
-setuptools.setup(name='pyros_ros',
+setuptools.setup(name='pyros_interfaces.ros',
     version=__version__,
     description='Pyros ROS interface to provide ROS introspection for non-ROS users.',
     url='http://github.com/asmodehn/pyros-rosinterface',
@@ -42,14 +21,14 @@ setuptools.setup(name='pyros_ros',
     #     'pyros.interfaces.ros.rostests',
     # ],
     packages=[
-        'pyros_interfaces_ros',
-        'pyros_interfaces_ros.api',
-        'pyros_interfaces_ros.tests',
-        'pyros_interfaces_ros.rostests',
+        'pyros_interfaces.ros',
+        'pyros_interfaces.ros.api',
+        'pyros_interfaces.ros.tests',
+        'pyros_interfaces.ros.rostests',
     ],
     package_dir={
         #'pyros': 'src/pyros',
-        'pyros_interfaces_ros': 'src/pyros_interfaces_ros'
+        #'pyros.interfaces.ros': 'src/pyros_interfaces_ros'  # pip is currently breaking this for editable packages -> changing structure
     },
     # entry_points={
     #     'console_scripts': [
@@ -78,5 +57,5 @@ setuptools.setup(name='pyros_ros',
     #     'rospublish': ROSPublishCommand,
     # },
     zip_safe=False,  # TODO testing...
-    # namespace_packages=['pyros', 'pyros.interfaces']
+    namespace_packages=['pyros_interfaces']
 )

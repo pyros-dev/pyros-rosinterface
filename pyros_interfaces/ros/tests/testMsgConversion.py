@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
 
 # Unit test import
-from pyros_interfaces_ros import message_conversion as msgconv
+from pyros_interfaces.ros import message_conversion as msgconv
 
 # ROS imports should now work from ROS or from python ( even without ROS env setup)
 import rospy

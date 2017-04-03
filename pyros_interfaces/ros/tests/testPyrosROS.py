@@ -15,11 +15,11 @@ sys.path.insert(1, current_path)  # sys.path[0] is always current path as per py
 
 # Unit test import (  will emulate ROS setup if needed )
 import time
-from pyros_interfaces_ros.pyros_ros import PyrosROS
+from pyros_interfaces.ros.pyros_ros import PyrosROS
 
-# we import pyros_interfaces_ros here only to get the ROS setup done if needed,
+# we import pyros_interfaces.ros here only to get the ROS setup done if needed,
 # because we need to use ros modules for testing here
-import pyros_interfaces_ros
+import pyros_interfaces.ros
 
 import rospy
 import roslaunch
@@ -29,7 +29,7 @@ from std_srvs.srv import Empty as EmptySrv, Trigger
 
 import pyzmp
 
-from pyros_interfaces_ros.rostests import Timeout
+from pyros_interfaces.ros.rostests import Timeout
 
 # useful test tools
 from pyros_utils import rostest_nose
@@ -61,7 +61,7 @@ def srv_cb(req):
 
 
 @nose.tools.nottest
-class TestPyrosROS(object):
+class TestPyrosROS(unittest.TestCase):
     """
     Main test fixture holding all tests
     Subclasses can override setup / teardown to test different environments
