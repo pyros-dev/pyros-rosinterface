@@ -71,8 +71,8 @@ logging.config.dictConfig(
 import nose
 
 from pyros_interfaces_common.transient_if_pool import DiffTuple
-from pyros_interfaces.ros import RosPublisherIfPool
-from pyros_interfaces.ros.connection_cache_utils import connection_cache_proxy_create, connection_cache_marshall
+from pyros_interfaces_ros import RosPublisherIfPool
+from pyros_interfaces_ros.connection_cache_utils import connection_cache_proxy_create, connection_cache_marshall
 
 
 import rospy
@@ -81,7 +81,7 @@ import rosnode
 from std_msgs.msg import String, Empty
 from std_srvs.srv import Empty as EmptySrv, Trigger
 
-from pyros_interfaces.ros.rostests import Timeout
+from pyros_interfaces_ros.rostests import Timeout
 
 # useful test tools
 from pyros_utils import rostest_nose

@@ -52,7 +52,7 @@ class PyrosROS(PyrosBase):
 
         super(PyrosROS, self).__init__(
             name=name or 'pyros_ros',  # Careful with name : we cannot restart a node with the same name again...
-            interface_class=('pyros_interfaces.ros.ros_interface', 'RosInterface'),  # lazy class evaluation to delay imports
+            interface_class=('pyros_interfaces_ros.ros_interface', 'RosInterface'),  # lazy class evaluation to delay imports
             args=args,  # we want to pass the name to the interface to init the node with that name
             kwargs=kwargs,
             instance_relative_config=True,

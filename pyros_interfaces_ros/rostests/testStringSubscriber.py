@@ -17,8 +17,8 @@ sys.path.insert(1, current_path)  # sys.path[0] is always current path as per py
 import time
 import Queue
 
-from pyros_interfaces.ros.subscriber_if import SubscriberBack
-from pyros_interfaces.ros.message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException
+from pyros_interfaces_ros.subscriber_if import SubscriberBack
+from pyros_interfaces_ros.message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException
 
 
 # ROS imports should now work from ROS or from python (without ROS env setup)

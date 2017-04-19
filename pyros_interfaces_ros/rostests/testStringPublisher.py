@@ -16,8 +16,8 @@ sys.path.insert(1, current_path)  # sys.path[0] is always current path as per py
 # Unit test import ( will emulate ROS setup if needed )
 import time
 
-from pyros_interfaces.ros.publisher_if import PublisherBack
-from pyros_interfaces.ros.message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException
+from pyros_interfaces_ros.publisher_if import PublisherBack
+from pyros_interfaces_ros.message_conversion import get_msg, get_msg_dict, populate_instance, extract_values, FieldTypeMismatchException
 
 # ROS imports should now work from ROS or from python (without ROS env setup)
 import rospy
