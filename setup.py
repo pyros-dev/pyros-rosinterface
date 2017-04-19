@@ -2,7 +2,7 @@ import setuptools
 
 
 # Ref : https://packaging.python.org/single_source_version/#single-sourcing-the-version
-with open('pyros_interfaces/ros/_version.py') as vf:
+with open('pyros_interfaces_ros/_version.py') as vf:
     exec(vf.read())
 
 
