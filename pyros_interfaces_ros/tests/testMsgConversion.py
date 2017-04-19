@@ -8,7 +8,7 @@ import pickle
 if __name__ == '__main__':
     # prepending because ROS relies on package dirs list in PYTHONPATH and not isolated virtualenvs
     # And we need our current module to be found first, before any similar package from another workspace
-    current_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    current_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
     # if not current_path in sys.path:
     sys.path.insert(1, current_path)  # sys.path[0] is always current path as per python spec
 
@@ -21,7 +21,7 @@ import rospy
 
 # useful test tools
 import nose
-from nose.tools import assert_equal, assert_true, assert_false
+import pytest
 
 # Test all standard message
 import std_msgs.msg as std_msgs
@@ -32,14 +32,14 @@ import std_msgs.msg as std_msgs
 def test_String_default():
     msg = std_msgs.String()
     val = msgconv.extract_values(msg)
-    assert_equal(val["data"], str())  # "data" : should not appear here
+    assert val["data"] == str()  # "data" : should not appear here
 
 
 def test_String_custom():
     msg = std_msgs.String("teststr")
     msgconv.populate_instance({"data": "teststr2"}, msg)  # we shouldnt need "data" here
     val = msgconv.extract_values(msg)
-    assert_equal(val["data"], "teststr2")
+    assert val["data"] == "teststr2"
 
 
 def test_msg_exception_pickle():
@@ -48,10 +48,10 @@ def test_msg_exception_pickle():
     pbuf = pickle.dumps(exc)
     pexc = pickle.loads(pbuf)
 
-    assert_equal(pexc.basetype, "message type")
-    assert_equal(len(pexc.fields), 2)
-    assert_true("field1" in pexc.fields)
-    assert_true("field2" in pexc.fields)
+    assert pexc.basetype == "message type"
+    assert len(pexc.fields) == 2
+    assert "field1" in pexc.fields
+    assert "field2" in pexc.fields
 
 # TODO : assert both "string" and "std_msgs/String" are convertible from&to "str" and "unicode"
 
@@ -59,6 +59,10 @@ def test_msg_exception_pickle():
 #TODO : assert exception are being thrown
 
 
+# if __name__ == '__main__':
+#     # finally running nose
+#     nose.runmodule()
+
 if __name__ == '__main__':
-    # finally running nose
-    nose.runmodule()
+    pytest.main(['-s', __file__])
+

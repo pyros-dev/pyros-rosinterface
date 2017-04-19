@@ -23,7 +23,7 @@ _logger.addHandler(logging.NullHandler())
 # early except to prevent unintentional workaround in all modules here for pyros packages we depend on
 import sys
 print (sys.path)
-from pyros_interfaces import common
+import pyros_interfaces_common
 # We ideally should add all dependencies imported by the modules in this subpackage...
 # We should be fine here when running from deb.
 # But when running from python we have to except here to get environment setup properly in child process.
