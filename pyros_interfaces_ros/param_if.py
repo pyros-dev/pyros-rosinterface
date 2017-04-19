@@ -4,7 +4,7 @@ from __future__ import print_function
 from collections import OrderedDict
 
 from .api import rospy_safe as rospy
-from pyros_interfaces.common.transient_if import TransientIf
+from pyros_interfaces_common.transient_if import TransientIf
 
 
 class ParamTuple(object):

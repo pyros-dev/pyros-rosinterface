@@ -24,7 +24,7 @@ _logger = logging.getLogger(__name__)
 # and let it propagate to parent logger, or other handler
 # the user of pyros should configure handlers
 
-from pyros_interfaces.common.transient_if_pool import DiffTuple
+from pyros_interfaces_common.transient_if_pool import DiffTuple
 from .baseinterface import BaseInterface
 from .param_if_pool import RosParamIfPool
 from .service_if_pool import RosServiceIfPool

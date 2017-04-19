@@ -4,8 +4,8 @@ import logging
 import unicodedata
 
 import six
-from pyros_interfaces.common.basenode import PyrosBase
-from pyros_interfaces.common.utils import deprecated
+from pyros_interfaces_common.basenode import PyrosBase
+from pyros_interfaces_common.utils import deprecated
 
 from . import config
 
