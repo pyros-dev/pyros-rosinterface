@@ -44,11 +44,11 @@ setuptools.setup(name='pyros_interfaces.ros',
         'pyzmp>=0.0.14',  # lets match the requirement in package.xml (greater than)
         'pyros_setup>=0.1.5',  # Careful : pyros-setup < 0.0.8 might already be installed as a deb in /opt/ros/indigo/lib/python2.7/dist-packages/
         'pyros_config>=0.1.4',
-        'pyros_interfaces.common',
+        'pyros-common>=0.4.0',
         'nose>=1.3.7',
         'mock==1.0.1',  # old mock to be compatible with trusty versions
     ],
-    dependency_links=['git+https://github.com/asmodehn/pyros-common.git@toxing#egg=pyros_interfaces.common'],
+    dependency_links=['git+https://github.com/asmodehn/pyros-common.git@namespace#egg=pyros-common'],
     # Reference for optional dependencies : http://stackoverflow.com/questions/4796936/does-pip-handle-extras-requires-from-setuptools-distribute-based-sources
     test_suite="nose.collector",
     tests_require=["nose"],

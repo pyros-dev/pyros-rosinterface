@@ -11,6 +11,9 @@ find_package(catkin REQUIRED COMPONENTS
     rostest
 )
 
+# TMP : because we need dependencies that are not released in ROS yet (pyros_interfaces.common declared in setup.py)
+set(CATKIN_PIP_NO_DEPS False CACHE BOOL "Whether we want to retrieve python dependencies and requirements for packages" FORCE)
+
 # defining current package as a package that should be managed by pip (not catkin - even though we make it usable with workspaces)
 catkin_pip_package(pyros_interfaces.ros)
 
