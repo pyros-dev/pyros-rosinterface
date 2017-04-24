@@ -30,6 +30,10 @@ import pyros_interfaces_common
 
 try:
     from .api import rospy_safe  # early except to prevent unintentional workaround in all modules here for ROS packages
+    # this is only useful when these dependent packages are in a catkin/ROS workspace
+    # TODO : detect if we are in a catkin workspace / following a ROS workflow ?
+    # TODO : probably better than activate if failure occurs...
+    # the main issue is for hybrid workflows...
 except ImportError:
     # This should be found from python dependencies. But not needed when running from deb.
     # Here should be the first time we setup ros variable in pyros package,
@@ -40,6 +44,7 @@ except ImportError:
     pyros_setup.configurable_import().configure().activate()
     # validate we can load ROS modules. Note other variables (like ROS_PACKAGE_PATH) should also be available.
     from .api import rospy_safe
+    # TODO : moving pyros_setup from here, to api package, would make testing (from python) a bit simpler.
 
 from .service_if import ServiceBack
 from .param_if import ParamBack
