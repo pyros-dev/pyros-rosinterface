@@ -2,8 +2,8 @@
 Changelog for package pyros_interfaces_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.0 (2017-04-24)
+------------------
 * comments
 * changing pyros_interfaces_ros import name
 * fixing pyros_interfaces_common import name
