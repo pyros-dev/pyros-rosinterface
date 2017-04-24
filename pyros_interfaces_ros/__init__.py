@@ -54,6 +54,7 @@ from .subscriber_if_pool import RosSubscriberIfPool
 from .publisher_if_pool import RosPublisherIfPool
 from .baseinterface import BaseInterface
 from .ros_interface import RosInterface
+from .pyros_ros import PyrosROS
 
 
 __all__ = [
@@ -61,4 +62,5 @@ __all__ = [
     'ServiceBack',
     'ParamBack',
     'RosInterface',
+    'PyrosROS',
 ]
