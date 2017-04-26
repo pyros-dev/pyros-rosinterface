@@ -9,6 +9,9 @@ from pyros_interfaces_common.utils import deprecated
 
 from . import config
 
+_logger = logging.getLogger(__name__)
+_logger.addHandler(logging.NullHandler())
+
 
 class PyrosROS(PyrosBase):
 
@@ -175,6 +178,7 @@ class PyrosROS(PyrosBase):
     def run(self, *args, **kwargs):
         """
         Running in a zmp.Node process, providing zmp.services
+        If you are calling this function directly, do not forget to pass in the configuration...
         """
 
         # TODO : install shutdown hook to shutdown if detected

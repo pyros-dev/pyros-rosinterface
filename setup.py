@@ -45,6 +45,7 @@ setuptools.setup(name='pyros_interfaces_ros',
         'pyros_setup>=0.1.5',  # Careful : pyros-setup < 0.0.8 might already be installed as a deb in /opt/ros/indigo/lib/python2.7/dist-packages/
         'pyros_config>=0.1.4',
         'pyros-common>=0.4.2',
+        'click',
         'nose>=1.3.7',
         'mock==1.0.1',  # old mock to be compatible with trusty versions
     ],
