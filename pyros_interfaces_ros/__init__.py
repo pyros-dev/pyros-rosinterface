@@ -22,7 +22,6 @@ _logger.addHandler(logging.NullHandler())
 # Doing this first, since it should not rely on  ROS setup at all
 # early except to prevent unintentional workaround in all modules here for pyros packages we depend on
 import sys
-print (sys.path)
 import pyros_interfaces_common
 # We ideally should add all dependencies imported by the modules in this subpackage...
 # We should be fine here when running from deb.
