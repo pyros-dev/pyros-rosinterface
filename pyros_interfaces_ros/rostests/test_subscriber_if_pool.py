@@ -70,7 +70,7 @@ logging.config.dictConfig(
 # Unit test import (  will emulate ROS setup if needed )
 import nose
 
-from pyros_common.transient_if_pool import DiffTuple
+from pyros_interfaces_common.transient_if_pool import DiffTuple
 from pyros_interfaces_ros import RosSubscriberIfPool
 from pyros_interfaces_ros.connection_cache_utils import connection_cache_proxy_create, connection_cache_marshall
 

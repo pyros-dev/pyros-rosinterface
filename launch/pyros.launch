@@ -1,0 +1,21 @@
+<!-- launch file to be able to launch pyros from ROS easily -->
+<launch>
+  <arg name="topics" default="['turtle1/pose']" doc="a python expression listing the different regex for topics to expose"/>
+  <arg name="services" default="[]" doc="a python expression listing the different regex for services to expose"/>
+  <arg name="params" default="[]" doc="a python expression listing the different regex for params to expose"/>
+  <arg name="enable_cache" default="false"/>  <!-- since connection_cache is not widely known&used, dont expect it by default -->
+  <arg name="connection_cache_list" default="/rocon/connection_cache/list" doc="topic to listen for connection cache list of connections"/>
+  <arg name="connection_cache_diff" default="/rocon/connection_cache/diff" doc="topic to listen for differences in connection cache list of connections"/>
+
+  <!-- pyros node when launched directly. Arguments are omitted, we use ros params instead. -->
+  <node pkg="pyros_interfaces_ros" name="pyros" type="pyros_interfaces_ros" args="">
+    <param name="topics" value="$(arg topics)" type="str" />
+    <param name="services" value="$(arg services)" type="str" />
+    <param name="params" value="$(arg params)" type="str" />
+    <param name="enable_cache" value="$(arg enable_cache)" type="bool" />
+    <!-- remapping subscriber to plug into connection cache -->
+    <remap from="~connections_list" to="$(arg connection_cache_list)"/>
+    <remap from="~connections_diff" to="$(arg connection_cache_diff)"/>
+  </node>
+
+</launch>
