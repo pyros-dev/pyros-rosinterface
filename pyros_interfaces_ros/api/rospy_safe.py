@@ -189,6 +189,7 @@ Subscriber = rospy.Subscriber
 Publisher = rospy.Publisher
 Service = rospy.Service
 ServiceProxy = rospy.ServiceProxy
+ServiceException = rospy.ServiceException
 
 rostime = rospy.rostime
 
