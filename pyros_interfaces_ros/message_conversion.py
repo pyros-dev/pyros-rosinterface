@@ -397,7 +397,7 @@ def _load_class(modname, subname, classname):
 
     try:
         # roslib maintains a cache of loaded manifests, so no need to duplicate
-        roslib.launcher.load_manifest(modname)
+        roslib.load_manifest(modname)
     except Exception as exc:
         raise InvalidPackageException(modname, exc)
 

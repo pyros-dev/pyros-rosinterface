@@ -9,3 +9,6 @@ import roslib
 # We wrap rospy function into safeguards for socket error
 # since the master seems to be quite sensitive to Network health.
 # TODO : refine which ones need which exception handling...
+
+def load_manifest(package_name):
+    roslib.load_manifest(package_name)
