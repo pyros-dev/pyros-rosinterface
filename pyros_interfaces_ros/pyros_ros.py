@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import logging
 import unicodedata
+import yaml
 
 import six
 from pyros_interfaces_common.basenode import PyrosBase
@@ -62,8 +63,10 @@ class PyrosROS(PyrosBase):
             default_config=self._default_config)  # we pass our specific default config
 
         # overriding default config with file provided
+        _logger.info("Loading default configuration from {0} \n{1}".format(config.__file__, yaml.dump(config)))
         self.config_handler.configure(config)  # configuring with our package default (user can statically define this)
         if pyros_config:
+            _logger.info("Loading overlayed configuration \n{0}".format(yaml.dump(config)))
             self.config_handler.configure(pyros_config)  # configuring with argument passed from user
 
 
