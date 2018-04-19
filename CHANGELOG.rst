@@ -2,8 +2,8 @@
 Changelog for package pyros_interfaces_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.4.1 (2018-04-19)
+------------------
 * adjusting package version
 * Merge pull request `#10 <https://github.com/pyros-dev/pyros-rosinterface/issues/10>`_ from pyros-dev/pyros_common_5
   adating pyros exceptionsto recent pyros_common.exception base class.
