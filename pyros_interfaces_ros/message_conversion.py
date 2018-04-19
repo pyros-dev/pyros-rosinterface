@@ -87,8 +87,7 @@ class NonexistentFieldException(PyrosException):
     def __init__(self, basetype, fields):
         self.basetype = basetype
         self.fields = fields
-        PyrosException.__init__(self, basetype, fields)
-        #super(NonexistentFieldException, self).__init__(basetype, fields)
+        super(NonexistentFieldException, self).__init__(basetype, fields)
 
     @property
     def message(self):
