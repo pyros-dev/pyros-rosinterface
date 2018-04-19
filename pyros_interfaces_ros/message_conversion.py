@@ -76,14 +76,23 @@ list_braces = re.compile(r'\[[^\]]*\]')
 class InvalidMessageException(PyrosException):
     def __init__(self, inst):
         self.inst = inst
-        super(InvalidMessageException, self).__init__("Unable to extract message values from {0!s} instance".format(type(inst).__name__))
+        super(InvalidMessageException, self).__init__(inst)
+
+    @property
+    def message(self):
+        return "Unable to extract message values from {0!s} instance".format(type(self.inst).__name__)
 
 
 class NonexistentFieldException(PyrosException):
     def __init__(self, basetype, fields):
         self.basetype = basetype
         self.fields = fields
-        super(NonexistentFieldException, self).__init__("Message type {0!s} does not have a field {1!s}".format(basetype, '.'.join(fields)))
+        PyrosException.__init__(self, basetype, fields)
+        #super(NonexistentFieldException, self).__init__(basetype, fields)
+
+    @property
+    def message(self):
+        return "Message type {0!s} does not have a field {1!s}".format(self.basetype, '.'.join(self.fields))
 
 
 class FieldTypeMismatchException(PyrosException):
@@ -93,10 +102,15 @@ class FieldTypeMismatchException(PyrosException):
         self.expected_type = expected_type
         self.found_type = found_type
 
+        super(FieldTypeMismatchException, self).__init__(roottype, fields, expected_type, found_type)
+
+    @property
+    def message(self):
         if self.roottype == self.expected_type:
-            super(FieldTypeMismatchException, self).__init__("Expected a JSON object for type {0!s} but received a {1!s}".format(self.roottype, self.found_type))
+            return "Expected a JSON object for type {0!s} but received a {1!s}".format(self.roottype, self.found_type)
         else:
-            super(FieldTypeMismatchException, self).__init__("{0!s} message requires a {1!s} for field {2!s}, but got a {3!s}".format(self.roottype, self.expected_type, '.'.join(fields), self.found_type))
+            return "{0!s} message requires a {1!s} for field {2!s}, but got a {3!s}".format(self.roottype, self.expected_type, '.'.join(self.fields), self.found_type)
+
 
 
 
