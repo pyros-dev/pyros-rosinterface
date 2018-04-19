@@ -6,6 +6,9 @@ services:
 branches:
   except:
    - gh-pages
+   - /^rpm/.*$/  # not testing rpm builds
+   - /^debian/.*$/ # not testing package building here (ROS buildfarm will do it)
+
 
 env:
   global:
