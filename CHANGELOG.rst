@@ -2,6 +2,33 @@
 Changelog for package pyros_interfaces_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* adjusting package version
+* Merge pull request `#10 <https://github.com/pyros-dev/pyros-rosinterface/issues/10>`_ from pyros-dev/pyros_common_5
+  adating pyros exceptionsto recent pyros_common.exception base class.
+* fixing super call
+* now exposing __version_\_ as usually done
+* bumping packages version
+* reviewing rosinstall file for this package.
+* Adapting Pyros Exceptions to new format
+* adating pyros exceptionsto recent pyros_common.exception base class.
+* Merge pull request `#8 <https://github.com/pyros-dev/pyros-rosinterface/issues/8>`_ from pyros-dev/improved_logging
+  now logging config values
+* Merge pull request `#7 <https://github.com/pyros-dev/pyros-rosinterface/issues/7>`_ from cehberlin/master
+  Fixed missing forwards that are used by rostful
+* fixed broken manifest loading in message_conversion and safe api
+* Fixed missing ServiceException forwarding
+* now logging config values
+* Merge pull request `#6 <https://github.com/pyros-dev/pyros-rosinterface/issues/6>`_ from asmodehn/namespace
+  Namespace
+* filling up readme
+* adding setup.py commands to make release easier...
+* adding main module and launch file to be able to launch pyros node by itself.
+* removing the debug print of sys.path
+* now exposing PyrosROS class from the package.
+* Contributors: AlexV, Christopher Hrabia, alexv
+
 0.4.0 (2017-04-24)
 ------------------
 * comments
