@@ -45,6 +45,9 @@ except ImportError:
     from .api import rospy_safe
     # TODO : moving pyros_setup from here, to api package, would make testing (from python) a bit simpler.
 
+# exposing version number
+from ._version import __version__, __version_info__
+
 from .service_if import ServiceBack
 from .param_if import ParamBack
 from .param_if_pool import RosParamIfPool
