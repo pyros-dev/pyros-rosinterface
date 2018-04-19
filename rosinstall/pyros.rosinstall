@@ -3,10 +3,10 @@
     uri: https://github.com/asmodehn/catkin_pip.git
 
 # Note: the ROS workflow does NOT need pyros-setup.
-# but Using Python IDE and tools with a catkin workspace does...
-- git:
-    local-name: pyros-setup
-    uri: https://github.com/asmodehn/pyros-setup
+# but Using Python IDE and tools with a catkin workspace might...
+# - git:
+#     local-name: pyros-setup
+#     uri: https://github.com/asmodehn/pyros-setup
 
 # These are pure python packages. Run `python setup.py rosdevelop` for each of them, to set them up for ROS development
 - git:
@@ -21,16 +21,10 @@
     local-name: pyros-rosinterface
     uri: https://github.com/asmodehn/pyros-rosinterface
 - git:
-    local-name: pyros-msgs
-    uri: https://github.com/asmodehn/pyros-msgs
-- git:
-    local-name: pyros-rosclient
-    uri: https://github.com/asmodehn/pyros-rosclient
-- git:
-    local-name: pyros-schemas
-    uri: https://github.com/asmodehn/pyros-schemas
-- git:
     local-name: pyros-utils
     uri: https://github.com/asmodehn/pyros-utils
+- git:
+    local-name: pyros-test
+    uri: https://github.com/asmodehn/pyros-test
 
 
