@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>pyros_interfaces_ros</name>
-  <version>0.4.0</version>
+  <version>0.4.1</version>
   <description>
     Dynamic ROS interface for Pyros
   </description>
@@ -17,7 +17,9 @@
   <buildtool_depend version_gte="0.6.18">catkin</buildtool_depend>
   <build_depend version_gte="0.1.17">catkin_pip</build_depend>
 
-  <depend version_gte="0.4.2">pyros_common</depend>
+  <depend version_gte="0.5.3">pyros_common</depend>
+  <depend version_gte="0.2.0">pyros_config</depend>
+  <depend version_gte="0.0.17">pyzmp</depend>
   <depend version_gte="0.1.3">pyros_utils</depend>
 
   <depend version_gte="1.11.19">rospy</depend>
