@@ -1,11 +1,16 @@
 # pyros-rosinterface
 ROS Interface sub-package for Pyros
 
+This package provides an interface to the multiprocess ROS system, from python.
+
+It is usable from a usual python virtual environment, following the normal python flow.
+
+If required, it could also be used from ROS itself (to allow ROS packaging of pyros apps)
 
 Assumptions
 --------------
 
-- OS is Ubuntu Trusty
+- OS is Ubuntu Xenial
 - ROS is already known. If not, get informations and tutorials on http://ros.org
 
 ROS Indigo System Setup
@@ -14,13 +19,13 @@ ROS Indigo System Setup
 ```bash
 $ sudo apt-get install virtualenvwrapper
 ```
-- Install ROS Indigo : http://wiki.ros.org/indigo/Installation/Ubuntu
+- Install ROS Kinetic : http://wiki.ros.org/kinetic/Installation/Ubuntu
 TL;DR : 
 ```bash
 $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 $ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
 $ sudo apt-get update
-$ sudo apt-get install ros-indigo-desktop
+$ sudo apt-get install ros-kinetic-desktop
 $ sudo rosdep init
 ```
 
@@ -43,6 +48,8 @@ Launching on ROS
 
 **_TODO_**
 
+
+_**TODO : using dynamic_reconfigure you can dynamically adjust what is exposed or not, without restarting the node.**_
 
 
 Running from python
@@ -70,6 +77,13 @@ Re-adding /opt/ros/jade/lib/python2.7/dist-packages in front of sys.path
 
 ```
 
-_**TODO : using dynamic_reconfigure you can dynamically adjust what is exposed or not, without restarting the node.**_
+_**TODO : tuning the configuration file will allow you to decide what to expose via the interface**_
 
-From this point on, you will need the [Pyros](https://github.com/asmodehn/pyros.git) framework installed to be able to interract with the ROS system using the pyros client.
+
+From this point on, you should use the [Pyros](https://github.com/pyros-dev/pyros.git) framework to be able to interract with the ROS system from another process.
+This will avoid any interference between ROS and your usual python environment. 
+
+Extras
+------
+
+_**TODO : using xonsh, you can dynamically access and modify ros internals, from a normal shell...**_
