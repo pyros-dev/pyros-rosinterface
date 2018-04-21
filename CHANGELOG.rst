@@ -1,144 +1,195 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package pyros_interfaces_ros
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog
+=========
+
+
+0.4.2 (2018-04-21)
+------------------
+- Adding rosservice dependency. [AlexV]
+- Fixing param getval/setval interface. [AlexV]
+- Updating README. [AlexV]
+- Changed travis config to not attempt to build packages. ros build farm
+  will do it. [AlexV]
+
 
 0.4.1 (2018-04-19)
 ------------------
-* adjusting package version
-* Merge pull request `#10 <https://github.com/pyros-dev/pyros-rosinterface/issues/10>`_ from pyros-dev/pyros_common_5
+- 0.4.1. [AlexV]
+- Updating changelog. [AlexV]
+- Adjusting package version. [AlexV]
+- Merge pull request #10 from pyros-dev/pyros_common_5. [AlexV]
+
   adating pyros exceptionsto recent pyros_common.exception base class.
-* fixing super call
-* now exposing __version_\_ as usually done
-* bumping packages version
-* reviewing rosinstall file for this package.
-* Adapting Pyros Exceptions to new format
-* adating pyros exceptionsto recent pyros_common.exception base class.
-* Merge pull request `#8 <https://github.com/pyros-dev/pyros-rosinterface/issues/8>`_ from pyros-dev/improved_logging
+- Fixing super call. [AlexV]
+- Now exposing __version__ as usually done. [AlexV]
+- Bumping packages version. [AlexV]
+- Reviewing rosinstall file for this package. [AlexV]
+- Adapting Pyros Exceptions to new format. [AlexV]
+- Adating pyros exceptionsto recent pyros_common.exception base class.
+  [AlexV]
+- Merge pull request #8 from pyros-dev/improved_logging. [AlexV]
+
   now logging config values
-* Merge pull request `#7 <https://github.com/pyros-dev/pyros-rosinterface/issues/7>`_ from cehberlin/master
+- Now logging config values. [alexv]
+- Merge pull request #7 from cehberlin/master. [AlexV]
+
   Fixed missing forwards that are used by rostful
-* fixed broken manifest loading in message_conversion and safe api
-* Fixed missing ServiceException forwarding
-* now logging config values
-* Merge pull request `#6 <https://github.com/pyros-dev/pyros-rosinterface/issues/6>`_ from asmodehn/namespace
+- Fixed broken manifest loading in message_conversion and safe api.
+  [Christopher Hrabia]
+- Fixed missing ServiceException forwarding. [Christopher Hrabia]
+- Merge pull request #6 from asmodehn/namespace. [AlexV]
+
   Namespace
-* filling up readme
-* adding setup.py commands to make release easier...
-* adding main module and launch file to be able to launch pyros node by itself.
-* removing the debug print of sys.path
-* now exposing PyrosROS class from the package.
-* Contributors: AlexV, Christopher Hrabia, alexv
+- Filling up readme. [AlexV]
+- Adding setup.py commands to make release easier... [AlexV]
+- Adding main module and launch file to be able to launch pyros node by
+  itself. [AlexV]
+- Removing the debug print of sys.path. [AlexV]
+- Now exposing PyrosROS class from the package. [AlexV]
+
 
 0.4.0 (2017-04-24)
 ------------------
-* comments
-* changing pyros_interfaces_ros import name
-* fixing pyros_interfaces_common import name
-* fixing path to version module.
-* dropping our idea of namespace packages since we cannot easily make a working ROS deb pkg out of it.
-* activating dependency retrieval (from dependency link) until pyros-common with namespace is released as deb.
-* using dependency links to get in progress namespace package pyros_interfaces directly from git.
-* enforcing usage of pkg-resources, not pkgutil, for namespace packages.
-  moved importe of common out of try catch.
-* reorganizing to nest everything under pyros_interfaces namespace
-* WIP reviewing how to handle config...
-* adding pyros_test as test dependency.
-* adding pyros_utils as dependency.
-  cleaning some imports.
-* switching to use shadow fixed ros repositories
-* fixed tests, version number and dependency to pyros_common
-* restructuring to simplify things...
-* fixing imports for new pyros structure
-* adding dependency on catkin_pip
-* fixing tests paths
-* setting cmakelists and package.xml
-* gathering and restructuring ros dependent part of pyros
-* adding project files
-* moving rosinstall files to proper directory
-* Merge branch 'master' into HEAD
-* Initial commit
-* moving mock interface outside of ROS, to not depend on ROS for mocks.
-* small file rename to match new name from pub and sub.
-* Merge branch 'pub_sub' of https://github.com/asmodehn/pyros into socket_safety
+- 0.4.0. [AlexV]
+- Preparing for 0.4 release. [AlexV]
+- Comments. [AlexV]
+- Changing pyros_interfaces_ros import name. [AlexV]
+- Fixing pyros_interfaces_common import name. [AlexV]
+- Fixing path to version module. [AlexV]
+- Dropping our idea of namespace packages since we cannot easily make a
+  working ROS deb pkg out of it. [AlexV]
+- Activating dependency retrieval (from dependency link) until pyros-
+  common with namespace is released as deb. [AlexV]
+- Using dependency links to get in progress namespace package
+  pyros_interfaces directly from git. [AlexV]
+- Enforcing usage of pkg-resources, not pkgutil, for namespace packages.
+  moved importe of common out of try catch. [AlexV]
+- Reorganizing to nest everything under pyros_interfaces namespace.
+  [AlexV]
+- WIP reviewing how to handle config... [alexv]
+- Adding pyros_test as test dependency. [alexv]
+- Adding pyros_utils as dependency. cleaning some imports. [alexv]
+- Switching to use shadow fixed ros repositories. [alexv]
+- Fixed tests, version number and dependency to pyros_common. [alexv]
+- Restructuring to simplify things... [alexv]
+- Fixing imports for new pyros structure. [alexv]
+- Adding dependency on catkin_pip. [alexv]
+- Fixing tests paths. [alexv]
+- Setting cmakelists and package.xml. [alexv]
+- Gathering and restructuring ros dependent part of pyros. [alexv]
+- Adding project files. [alexv]
+- Moving rosinstall files to proper directory. [alexv]
+- Merge branch 'master' into HEAD. [alexv]
+- Initial commit. [AlexV]
+- Moving mock interface outside of ROS, to not depend on ROS for mocks.
+  [alexv]
+- Small file rename to match new name from pub and sub. [alexv]
+- Merge branch 'pub_sub' of https://github.com/asmodehn/pyros into
+  socket_safety. [alexv]
+
   Conflicts:
-  pyros/rosinterface/param_if_pool.py
-  pyros/rosinterface/topic.py
-* fixing node interface after pub/sub mixup. simplified stringpub and string sub tests.
-* fixing tests filenames. cleanup debug prints.
-* fixing cross logic between pubs ans subs.
-* improving subscriber / publisher inter interfacing... added timeout to connect a pub/sub.
-* now properly inverting (publisher_if is subscriber and vice versa)
-* fixing broken update loop of ros_interface.
-* skipping failing rosinterface test for now. passing fine independently, more investigation needed...
-* separating pubs and subs. needs pyros_test 0.0.6 for tests.
-* moving all ros api calls into subpackage to make patching easier.
-  cleaned up imports
-* first version of rospy safe API
-* improving travis build to test with cache as well...
-  change version_eq to version_gte since buidfarm doesnt handle version_eq properly (yet?).
-* moving mockinterface into rosinterface.mock since design follows ROS concepts.
-  fixed all tests.
-  bumped pyros minor version to 0.3.0 because of all the changes...
-* merged testRosInterfaceNoCache and testRosInterfaceCache. fixed all issues.
-* fixed tests without cache
-* basic usecase now working again with cache. needs lots of cleanup...
-* continuing changes in rosinterface, splitting service, topics and params interface pools
-  now rosinterface tests all passing
-* splitting baseinterface to simplify things. fixed mockinterface and tests.
-* various cleanups
-* improved profiling script.
-* comments
-* fixing bwcompat issues.
-  dropping shutdown behavior fix for now.
-* improved management of interface topics and reference counting.
-  still broken for multiprocess because shutdown is not working properly.
-* fixing params and services removal with cache diff input.
-  improved topics interface creation and cleanup.
-* speeding up topic interfacing
-* fixed logic for removing transients on difference update.
-  now forwarding exception if param type not found
-  small test improvements.
-* fixing param behavior in ros_interface and added unit tests.
-* improving first dynamic ROS import to ros_interface. improved logging.
-  some test clean up since we use python testing framework now.
-* now fails with explanation if ConnectionCacheProxy not available in rocon_python_comms.
-* importing pyros_setup only when imports from ros_interface failed.
-* improved main init to import dependencies from python or from ROS packages.
-  fixed check for unicode strings.
-  started implementing CATKIN_PIP_NO_DEPS for testing.
-  reviewing dependencies version.
-* moved some dependencies out of pyros_setup, to not require pyros_setup if using ROS environment as usual.
-* Merge branch 'indigo-devel' of https://github.com/asmodehn/pyros into config_refactor
+  	pyros/rosinterface/param_if_pool.py
+  	pyros/rosinterface/topic.py
+- Fixing node interface after pub/sub mixup. simplified stringpub and
+  string sub tests. [alexv]
+- Fixing tests filenames. cleanup debug prints. [alexv]
+- Fixing cross logic between pubs ans subs. [alexv]
+- Improving subscriber / publisher inter interfacing... added timeout to
+  connect a pub/sub. [alexv]
+- Now properly inverting (publisher_if is subscriber and vice versa)
+  [alexv]
+- Fixing broken update loop of ros_interface. [alexv]
+- Skipping failing rosinterface test for now. passing fine
+  independently, more investigation needed... [alexv]
+- Separating pubs and subs. needs pyros_test 0.0.6 for tests. [alexv]
+- Moving all ros api calls into subpackage to make patching easier.
+  cleaned up imports. [AlexV]
+- First version of rospy safe API. [AlexV]
+- Improving travis build to test with cache as well... change version_eq
+  to version_gte since buidfarm doesnt handle version_eq properly
+  (yet?). [alexv]
+- Moving mockinterface into rosinterface.mock since design follows ROS
+  concepts. fixed all tests. bumped pyros minor version to 0.3.0 because
+  of all the changes... [alexv]
+- Merged testRosInterfaceNoCache and testRosInterfaceCache. fixed all
+  issues. [alexv]
+- Fixed tests without cache. [alexv]
+- Basic usecase now working again with cache. needs lots of cleanup...
+  [alexv]
+- Continuing changes in rosinterface, splitting service, topics and
+  params interface pools now rosinterface tests all passing. [alexv]
+- Splitting baseinterface to simplify things. fixed mockinterface and
+  tests. [alexv]
+- Various cleanups. [alexv]
+- Improved profiling script. [alexv]
+- Comments. [alexv]
+- Fixing bwcompat issues. dropping shutdown behavior fix for now.
+  [alexv]
+- Improved management of interface topics and reference counting. still
+  broken for multiprocess because shutdown is not working properly.
+  [alexv]
+- Fixing params and services removal with cache diff input. improved
+  topics interface creation and cleanup. [alexv]
+- Speeding up topic interfacing. [alexv]
+- Fixed logic for removing transients on difference update. now
+  forwarding exception if param type not found small test improvements.
+  [alexv]
+- Fixing param behavior in ros_interface and added unit tests. [alexv]
+- Improving first dynamic ROS import to ros_interface. improved logging.
+  some test clean up since we use python testing framework now. [alexv]
+- Now fails with explanation if ConnectionCacheProxy not available in
+  rocon_python_comms. [alexv]
+- Importing pyros_setup only when imports from ros_interface failed.
+  [alexv]
+- Improved main init to import dependencies from python or from ROS
+  packages. fixed check for unicode strings. started implementing
+  CATKIN_PIP_NO_DEPS for testing. reviewing dependencies version.
+  [alexv]
+- Moved some dependencies out of pyros_setup, to not require pyros_setup
+  if using ROS environment as usual. [alexv]
+- Merge branch 'indigo-devel' of https://github.com/asmodehn/pyros into
+  config_refactor. [alexv]
+
   Conflicts:
-  pyros/rosinterface/ros_interface.py
-* fixing tests
-* fixed check for early topic detection and stabilize cache diff optimization.
-* reviewing how we use zmp nodes and improving tests... WIP
-* fix adding available services.
-  improved logging.
+  	pyros/rosinterface/ros_interface.py
+- Fixing tests. [alexv]
+- Fixed check for early topic detection and stabilize cache diff
+  optimization. [alexv]
+- Reviewing how we use zmp nodes and improving tests... WIP. [alexv]
+- Fix adding available services. improved logging. [alexv]
+
   Conflicts:
-  pyros/baseinterface/baseinterface.py
-  pyros/rosinterface/ros_interface.py
-* fixed checking for available transients. now doesnt have to be a dict, just an iterable.
+  	pyros/baseinterface/baseinterface.py
+  	pyros/rosinterface/ros_interface.py
+- Fixed checking for available transients. now doesnt have to be a dict,
+  just an iterable. [alexv]
+
   Conflicts:
-  pyros/rosinterface/ros_interface.py
-* removed useless None in get(smthg, None)
-* added interface cache tests to run by default.
-  reverted debug long timeouts.
-* finished manual merging of connection_cache_diff_callback.
-  fixed all RosInterfaceCache tests, but code really need refactoring...
-* starting manual merge of connection_cache_diff_callback branch
-* fixes for connection cache with diff optimisation.
-  added pubsub wait for confirm from cache, but deleted pubsub report deleted before confirmation from cache.
-  Not sure if it is the right choice, but extra care is needed when deleting...
-* fix tests for RosInterface especially with cache (but no diff optim)
-* adding yujin underlay as we need it for connectioncache message format.
-* fixing path to current workspace
-* fixing various minor python issues
-* Merge branch 'indigo-devel' of https://github.com/asmodehn/pyros into config_refactor
+  	pyros/rosinterface/ros_interface.py
+- Removed useless None in get(smthg, None) [alexv]
+- Added interface cache tests to run by default. reverted debug long
+  timeouts. [alexv]
+- Finished manual merging of connection_cache_diff_callback. fixed all
+  RosInterfaceCache tests, but code really need refactoring... [alexv]
+- Starting manual merge of connection_cache_diff_callback branch.
+  [alexv]
+- Fixes for connection cache with diff optimisation. added pubsub wait
+  for confirm from cache, but deleted pubsub report deleted before
+  confirmation from cache. Not sure if it is the right choice, but extra
+  care is needed when deleting... [alexv]
+- Fix tests for RosInterface especially with cache (but no diff optim)
+  [alexv]
+- Adding yujin underlay as we need it for connectioncache message
+  format. [alexv]
+- Fixing path to current workspace. [alexv]
+- Fixing various minor python issues. [AlexV]
+- Merge branch 'indigo-devel' of https://github.com/asmodehn/pyros into
+  config_refactor. [AlexV]
+
   Conflicts:
-  package.xml
-  pyros/pyros_client.py
-* removed duplicated import
-* moved pyros and zmp sources, otherwise pyros was not find through egg link.
-* Contributors: AlexV, alexv
+  	package.xml
+  	pyros/pyros_client.py
+- Removed duplicated import. [AlexV]
+- Moved pyros and zmp sources, otherwise pyros was not find through egg
+  link. [alexv]
+
+
