@@ -156,10 +156,10 @@ class PyrosROS(PyrosBase):
     def param(self, name, value=None):
         if self.interface and name in self.interface.params.keys():
             if value is not None:
-                self.interface.params.get(name).set(value)
+                self.interface.params.get(name).setval(value)
                 value = None  # consuming the message
             else:
-                value = self.interface.params.get(name).get()
+                value = self.interface.params.get(name).getval()
         return value
 
     def params(self):
