@@ -17,12 +17,13 @@ with open('pyros_interfaces_ros/_version.py') as vf:
 # Best Flow :
 # Clean previous build & dist
 # $ gitchangelog >CHANGELOG.rst
-# change version in code and changelog
+# change version in code and changelog (AND in package .xml for ROS !)
 # $ python setup.py prepare_release
 # WAIT FOR TRAVIS CHECKS
 # $ python setup.py publish
 # => TODO : try to do a simpler "release" command
 
+#
 # And then for ROS, directly (tag is already in git repo):
 # bloom-release --rosdistro kinetic --track kinetic pyros_interfaces_ros
 
