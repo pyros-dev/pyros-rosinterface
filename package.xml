@@ -36,6 +36,7 @@
   <test_depend version_gte="1.11.12">rosunit</test_depend>
   <test_depend version_gte="1.11.19">rostopic</test_depend>
   <test_depend version_gte="1.11.19">rosservice</test_depend>
+  <test_depend version_gte="1.11.19">rosnode</test_depend>
 
   <!-- documentation dependencies -->
   <doc_depend version_gte="0.2.10">python-catkin-pkg</doc_depend>
